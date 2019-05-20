@@ -23,4 +23,4 @@ Example:
 
           The ``baseCommand`` should make reference to the run.sh file
 
-          Here is a cwl file template [LINK TO TEMPLATE]
+          A cwl file template can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/template.cwl>`_

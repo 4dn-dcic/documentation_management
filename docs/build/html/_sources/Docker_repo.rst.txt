@@ -29,7 +29,7 @@ Example:
 
 The commands from line 38 down, are standard for the 4DN-DCIC pipelines.
 
-You can find a template of the Dockerfile can be found here: [Link to the dockerfile]
+You can find a template of the Dockerfile can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/Dockerfile>`_
 
 **The downloads.sh file:**
 
