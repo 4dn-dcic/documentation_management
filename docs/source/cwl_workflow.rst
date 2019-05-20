@@ -2,7 +2,7 @@ CWL workflow
 ============
 
 Once the docker image is setup, it is time to create a workflow to run the
-pipeline inside the docker.
+pipeline step by step inside the docker.
 
 First create a folder in the repo called ``cwl``. Inside the folder create a cwl file
 called ``<repo-name>.cwl``. The cwl file should describe all the inputs

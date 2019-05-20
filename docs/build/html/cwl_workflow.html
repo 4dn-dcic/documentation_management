@@ -35,7 +35,7 @@
   <div class="section" id="cwl-workflow">
 <h1>CWL workflow<a class="headerlink" href="#cwl-workflow" title="Permalink to this headline">¶</a></h1>
 <p>Once the docker image is setup, it is time to create a workflow to run the
-pipeline inside the docker.</p>
+pipeline step by step inside the docker.</p>
 <p>First create a folder in the repo called <code class="docutils literal notranslate"><span class="pre">cwl</span></code>. Inside the folder create a cwl file
 called <code class="docutils literal notranslate"><span class="pre">&lt;repo-name&gt;.cwl</span></code>. The cwl file should describe all the inputs
 (including files and parameters), the outputs and the order in which they occur.</p>
@@ -48,7 +48,7 @@ convensions as the example above.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> is v1.0</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dockerPull</span></code> should make reference to the image in DockerHub</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> should make reference to the run.sh file</p>
-<p>Here is a cwl file template [LINK TO TEMPLATE]</p>
+<p>A cwl file template can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/template.cwl">here</a></p>
 </div>
 </div>
 
@@ -75,8 +75,6 @@ convensions as the example above.</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CWL workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post_data.html">Implement in Data Portal</a></li>
 </ul>
 
 <div class="relations">

@@ -1,6 +1,6 @@
 {
-  "accession": "<create a workflow accession id",
-  "app_name": "<name of the workflow",
+  "accession": "<create a workflow accession id>",
+  "app_name": "<name of the workflow>",
   "app_version": "dev",
   "arguments": [
       {
@@ -10,19 +10,14 @@
       },
       {
           "argument_type": "parameter",
-          "workflow_argument_name": "<same parameter name as the cwl"
-      },
-      {
-          "argument_type": "parameter",
-          "workflow_argument_name": "num_rows"
-
+          "workflow_argument_name": "<same parameter name as the cwl file>"
       }
 
   ],
   "award": "1U01CA200059-01",
   "category": ["<the category of the software>"],
   "cwl_child_filenames": [],
-  "cwl_directory_url": "https://raw.githubusercontent.com/4dn-dcic/docker-4dn-bedtomultivec/v4/cwl/",
+  "cwl_directory_url": "https://raw.githubusercontent.com/4dn-dcic/<repo-name>/<version>/cwl/",
   "cwl_main_filename": "<cwl file name>",
   "cwl_pointer": "",
   "description": "<brief description what the workflow does>",
@@ -36,42 +31,14 @@
               {
                   "meta": {
                       "cardinality": "single",
-                      "file_format": "69f6d609-f2ac-4c82-9472-1a13331b5ce9",
+                      "file_format": "<uuid of the file format>",
                       "global": true,
                       "type": "data file"
                   },
-                  "name": "bedfile",
+                  "name": "<same input name as the cwl file>",
                   "source": [
                       {
-                          "name": "bedfile"
-                      }
-                  ]
-              },
-              {
-                  "meta": {
-                      "cardinality": "single",
-                      "file_format": "d13d06cf-218e-4f61-55f0-93f226248b2c",
-                      "global": true,
-                      "type": "data file"
-                  },
-                  "name": "chromsizes_file",
-                  "source": [
-                      {
-                          "name": "chromsizes_file"
-                      }
-                  ]
-              },
-              {
-                  "meta": {
-                      "cardinality": "single",
-                      "file_format": "dba26778-f40a-4561-a552-65539702ded4",
-                      "global": true,
-                      "type": "data file"
-                  },
-                  "name": "rows_info",
-                  "source": [
-                      {
-                          "name": "rows_info"
+                          "name": "<same as name>"
                       }
                   ]
               }
@@ -81,7 +48,7 @@
                   "file format conversion"
               ],
               "software_used": [
-                 "/softwares/6a648e6d-8954-4d05-ac5c-bf22d1590717/"
+                 "<uuid of the software used>"
               ]
           },
           "name": "bedtomultivec",
@@ -103,6 +70,6 @@
           ]
       }
   ],
-  "title": "Converting bed to multivec v4",
-  "uuid": "<generate a uuid for the worflow"
+  "title": "<title of the workflow including version>",
+  "uuid": "<generate a uuid for the worflow>"
 }

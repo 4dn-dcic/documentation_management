@@ -14,7 +14,6 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Implement in Data Portal" href="post_data.html" />
     <link rel="prev" title="Create Workflow Object" href="workflow_object.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -41,14 +40,17 @@ clone the tibanna repository
 write a tibanna_input.json file</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>if the output file is an extra file (ex. beddb and bed.multivec is an extra file for bed file)
-and not a new process file, it is necessary to add that information to tibanna.
-<a class="reference external" href="https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L259">https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L259</a></p>
+<p>if the output file is an extra file instead of a new process file, which means that it is the result of
+a format conversion (ex. beddb and bed.multivec is an extra file for bed file)
+It is necessary to add that information to tibanna.
+<a class="reference external" href="https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268">https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268</a></p>
 </div>
 </div>
 <div class="section" id="run-tibanna-test">
 <h2>Run Tibanna Test<a class="headerlink" href="#run-tibanna-test" title="Permalink to this headline">¶</a></h2>
-<p>Go to the tibanna repository folder and run the following commands:</p>
+<p>Set up by following the instructions:
+<a class="reference external" href="https://tibanna.readthedocs.io/en/latest/installation.html">https://tibanna.readthedocs.io/en/latest/installation.html</a></p>
+<p>Once Tibanna is setup, go to the Tibanna repository folder and run the following commands:</p>
 <p>Activate the Tibanna environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ~/venv/tibanna/bin/activate
 </pre></div>
@@ -60,22 +62,33 @@ and not a new process file, it is necessary to add that information to tibanna.
 </div>
 <div class="section" id="benchmarking">
 <h2>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>This is only required when the pipeline memory consumption it is highly dependent of the size of the
-file. It is necessary to get an estimate of the relationship between them
-so that Tibanna knows how much resources to allocate for each file based on its
+file.</p>
+</div>
+<p>It is necessary to get an estimate of the relationship between the size of the input
+files and the memory consumption so that Tibanna knows how much resources to allocate for each file based on its
 size.</p>
 <p>In order to do this, run the tibanna test above on different file sizes, changing
 the following parameters in the tibanna_input.json file accordingly:</p>
 <p><code class="docutils literal notranslate"><span class="pre">instance_type</span></code>: choose a t2 instance that has bigger memory
 <code class="docutils literal notranslate"><span class="pre">ebs_size</span></code>: modify the size of the instance for bigger files</p>
-<p>Look at the output of the tests and record, the size, the max memory used and the
-max CPU used for each file. This will give you a sense of the relationship between
+<p>Look at the output of the tests and record, the size, the max memory used, the
+max CPU used and the size of the output file for each file. This will give you a sense of the relationship between
 file size, memory and CPU consumption.</p>
 <p>Then go to <a class="reference external" href="https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py">https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py</a></p>
 <p>and create a function for your pipeline that calculates how much resources are
 needed for each file size.</p>
-<p>Once you submit a PR, and Soo deploys tibanna, you can test again, usings the
-tibanna_input.json file without the following parameters:</p>
+<p>This is an example of the function created for insulator score caller:
+<a class="reference external" href="https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py#L218">https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py#L218</a></p>
+<p>The script only run using 1 thread, therefore  <code class="docutils literal notranslate"><span class="pre">nthreads</span></code> = 1</p>
+<p>The output file size was approx 1000 times smaller than the input file,
+therefore <code class="docutils literal notranslate"><span class="pre">output_bw_size</span></code> = <code class="docutils literal notranslate"><span class="pre">data_input_size</span></code> * 0.001</p>
+<p>After testing different input files in a range of 1GB - 45GB, the memory seemed
+to not surpassed 1.5GB, therefore, <code class="docutils literal notranslate"><span class="pre">mem</span></code> = 2GB</p>
+<p>Once you submit a PR for your function, and Soo deploys tibanna, you can test again, using the
+tibanna_input.json file without specifying the size of the instance.</p>
 <p>Once the test passes, you can post the workflow in data, make sure to use the
 same uuids you used in webdev.</p>
 <p>Give the tibanna_input.json file to Koray to run the workflow in the files on data.</p>
@@ -111,7 +124,6 @@ same uuids you used in webdev.</p>
 <li class="toctree-l2"><a class="reference internal" href="#benchmarking">Benchmarking</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="post_data.html">Implement in Data Portal</a></li>
 </ul>
 
 <div class="relations">
@@ -119,7 +131,6 @@ same uuids you used in webdev.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="workflow_object.html" title="previous chapter">Create Workflow Object</a></li>
-      <li>Next: <a href="post_data.html" title="next chapter">Implement in Data Portal</a></li>
   </ul></li>
 </ul>
 </div>

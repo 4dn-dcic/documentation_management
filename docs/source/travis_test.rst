@@ -34,9 +34,9 @@ Example:
 
 .. image:: /images/input_json.png
 
-- a ``json_null_test.py`` file. Just copy this `template <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/json_null_test.py>`_
+- a ``json_null_test.py`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/json_null_test.py>`_
 
-- a ``test_cwl.sh`` file. Just copy this `template <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tests_cwl.sh>`_
+- a ``test_cwl.sh`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tests_cwl.sh>`_
 
 
 Configuring Travis in Github
