@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Docker Image Repo &#8212; 4DN Pipelines Development  Guide  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CWL workflow" href="cwl_workflow.html" />
+    <link rel="prev" title="Bioinformatics Software" href="bioinformatics_software.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="docker-image-repo">
+<h1>Docker Image Repo<a class="headerlink" href="#docker-image-repo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The first thing to do is to create a Github repository for the pipeline. This
+repository should follow the 4DN-DCIC general conventions.</p>
+</div>
+<div class="section" id="dn-dcic-general-conventions">
+<h2>4DN-DCIC General conventions<a class="headerlink" href="#dn-dcic-general-conventions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Naming:</strong></p>
+<p>The name of the repo should start by the prefix <strong>docker-4dn-</strong> followed by the name of the repo.
+The name should be informative about what the pipeline does.</p>
+<p>Example: This pipeline converts a file from bed format to multivec format.</p>
+<img alt="_images/repo_name.png" src="_images/repo_name.png" />
+<p><strong>The Dockerfile:</strong></p>
+<p>This file contains the instructions to assemble the docker image.</p>
+<p>Example:</p>
+<img alt="_images/dockerfile_image.png" src="_images/dockerfile_image.png" />
+<p>The commands from line 38 down, are standard for the 4DN-DCIC pipelines.</p>
+<p>You can find a template of the Dockerfile can be found here: [Link to the dockerfile]</p>
+<p><strong>The downloads.sh file:</strong></p>
+<p>This file contains the software that needs to be used to run the pipeline.</p>
+<p>Example:</p>
+<img alt="_images/downloads_file.png" src="_images/downloads_file.png" />
+<p><strong>The requirements.txt/environment.yml file:</strong></p>
+<p>This file contains the packages and the versions used to run the software</p>
+<p><strong>The scripts folder</strong></p>
+<p>This folder contains the scripts that are going to be run.
+The <code class="docutils literal notranslate"><span class="pre">run-&lt;repo-name&gt;.sh</span></code> is the master file. It contains the command-line
+instructions to run the scripts and tools inside the docker from input to output.</p>
+<p>Example:</p>
+<img alt="_images/run_file.png" src="_images/run_file.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Create a new branch from master and label it with a version such as v1, v2…</p>
+</div>
+</div>
+<div class="section" id="testing-the-docker-image-locally">
+<h2>Testing the docker image locally<a class="headerlink" href="#testing-the-docker-image-locally" title="Permalink to this headline">¶</a></h2>
+<p>In order to test the docker image locally, you need to download and install docker.</p>
+<p>Once docker is installed in your computer, clone the repo and go to the local folder.
+Run the following command to build the local image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker build -t &lt;name-of-the-local-image&gt;:version .
+</pre></div>
+</div>
+<p>The name of the local image is the same and the name of the repo.
+Make sure to include the version that corresponds to the branch label.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker build -t 4dn-bedtomultivec:v4 .
+</pre></div>
+</div>
+<p>Once the docker image is build, you can test it by running the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -v &lt;path-to-test-files&gt;:/d1/:rw &lt;the-docker-image&gt; run-&lt;repo-name&gt;.sh [parameters]
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -v /users/luisa/test_files/:/d1:rw 4dn-bedtomultivec:v4 run-bedtomultivec.sh /d1/test_file.bed /d1/test.chrom.sizes 200 /d1/infos.txt 15 /d1/
+</pre></div>
+</div>
+<p>Once your local image works properly and gives the correct output, you can push the docker image to DockerHub.
+Ask Soo to add your github username to the dcic DockerHub repo.</p>
+<p>First tag the image using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker tag &lt;your_image_name&gt;:&lt;version&gt; 4dndcic/&lt;your_image_name&gt;:&lt;version&gt;
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker tag 4dn-bedtomultivec:v4 4dndcic/4dn-bedtomultivec:v4
+</pre></div>
+</div>
+<p>Now you can push the image to the dockerhub repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker push 4dndcic/4dn-bedtomultivec:v4
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to login first to the DockerHub account using the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code> and entering your username and password. You can now check the docker image in the DockerHub repo.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">4DN Pipelines Development  Guide</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker Image Repo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dn-dcic-general-conventions">4DN-DCIC General conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-the-docker-image-locally">Testing the docker image locally</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_data.html">Implement in Data Portal</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="bioinformatics_software.html" title="previous chapter">Bioinformatics Software</a></li>
+      <li>Next: <a href="cwl_workflow.html" title="next chapter">CWL workflow</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Luisa Mercado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Docker_repo.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CWL workflow &#8212; 4DN Pipelines Development  Guide  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Travis Test" href="travis_test.html" />
+    <link rel="prev" title="Docker Image Repo" href="Docker_repo.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="cwl-workflow">
+<h1>CWL workflow<a class="headerlink" href="#cwl-workflow" title="Permalink to this headline">¶</a></h1>
+<p>Once the docker image is setup, it is time to create a workflow to run the
+pipeline inside the docker.</p>
+<p>First create a folder in the repo called <code class="docutils literal notranslate"><span class="pre">cwl</span></code>. Inside the folder create a cwl file
+called <code class="docutils literal notranslate"><span class="pre">&lt;repo-name&gt;.cwl</span></code>. The cwl file should describe all the inputs
+(including files and parameters), the outputs and the order in which they occur.</p>
+<p>Example:</p>
+<img alt="_images/cwl_file.png" src="_images/cwl_file.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Except for the inputs and outputs, the cwl file follows the same
+convensions as the example above.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> is v1.0</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dockerPull</span></code> should make reference to the image in DockerHub</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> should make reference to the run.sh file</p>
+<p>Here is a cwl file template [LINK TO TEMPLATE]</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">4DN Pipelines Development  Guide</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CWL workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_data.html">Implement in Data Portal</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Docker_repo.html" title="previous chapter">Docker Image Repo</a></li>
+      <li>Next: <a href="travis_test.html" title="next chapter">Travis Test</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Luisa Mercado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cwl_workflow.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
