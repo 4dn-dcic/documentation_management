@@ -11,5 +11,5 @@ Example:
 
 You can find the bedtomultivec workflow.json `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/bedtomultivec_workflow_v4.json>`_
 
-Here is a `template <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/workflow.json>`_
+Here is a `template <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/workflow.json>`_
 you can use.

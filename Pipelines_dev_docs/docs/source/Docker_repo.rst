@@ -27,7 +27,7 @@ Example:
 
 .. image:: images/dockerfile_image.png
 
-You can find a template of the Dockerfile `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/Dockerfile>`_
+You can find a template of the Dockerfile `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/Dockerfile>`_
 
 **The scripts folder**
 

@@ -17,7 +17,7 @@ Example:
             This .travis.yml file is very similar for all the pipelines. You can
             follow the template and modify the docker image name. The version of
             the docker image does not need to be included. The .travis.yml file
-            temple can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/travis.yml>`_
+            temple can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/travis.yml>`_
 
 Tests files
 ------------
@@ -34,9 +34,9 @@ Example:
 
 .. image:: /images/input_json.png
 
-- a ``json_null_test.py`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/json_null_test.py>`_
+- a ``json_null_test.py`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/json_null_test.py>`_
 
-- a ``test_cwl.sh`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tests_cwl.sh>`_
+- a ``test_cwl.sh`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/tests_cwl.sh>`_
 
 
 Configuring Travis in Github
