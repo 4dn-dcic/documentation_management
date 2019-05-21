@@ -1,35 +1,155 @@
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>4DN Pipelines Development Guide &#8212; 4DN Pipelines Development  Guide  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4DN Pipelines Development Guide &mdash; 4DN Pipelines Development  Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bioinformatics Software" href="bioinformatics_software.html" />
+    <link rel="next" title="Bioinformatics Software" href="bioinformatics_software.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="#" class="icon icon-home"> 4DN Pipelines Development  Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">4DN Pipelines Development  Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>4DN Pipelines Development Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="dn-pipelines-development-guide">
 <h1>4DN Pipelines Development Guide<a class="headerlink" href="#dn-pipelines-development-guide" title="Permalink to this headline">¶</a></h1>
@@ -48,7 +168,7 @@ software:</p>
 <li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Docker_repo.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Docker_repo.html#dn-dcic-general-conventions">4DN-DCIC General conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Docker_repo.html#dn-dcic-general-conventions">4DN-DCIC General Conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Docker_repo.html#testing-the-docker-image-locally">Testing the docker image locally</a></li>
 </ul>
 </li>
@@ -61,9 +181,15 @@ software:</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Tibanna_test.html#install-tibanna">Install Tibanna</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tibanna_test.html#prepare-tibanna-input">Prepare Tibanna input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tibanna_test.html#run-tibanna-test">Run Tibanna Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tibanna_test.html#benchmarking">Benchmarking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#the-insulator-score-pipeline">The Insulator Score pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#the-hi-c-pipeline">The Hi-C Pipeline</a></li>
 </ul>
 </li>
 </ul>
@@ -72,75 +198,50 @@ software:</p>
 </div>
 
 
+           </div>
+           
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">4DN Pipelines Development  Guide</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="bioinformatics_software.html" title="next chapter">Bioinformatics Software</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-    </form>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bioinformatics_software.html" class="btn btn-neutral float-right" title="Bioinformatics Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
     </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Luisa Mercado
 
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-
-
-
+</footer>
 
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2019, Luisa Mercado.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
     
-  </body>
+   
+
+</body>
 </html>

@@ -7,7 +7,7 @@ Getting Started
 The first thing to do is to create a Github repository for the pipeline. This
 repository should follow the 4DN-DCIC general conventions.
 
-4DN-DCIC General conventions
+4DN-DCIC General Conventions
 -----------------------------
 
 **Naming:**
@@ -29,9 +29,18 @@ Example:
 
 You can find a template of the Dockerfile `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/Dockerfile>`_
 
+**The scripts folder**
+
+This folder contains the scripts of your bioinformatics software. The ``run-<repo-name>.sh`` is the master file.
+It contains the command-line instructions to run the scripts and tools inside the docker from input to output.
+
+Example:
+
+.. image:: images/run_file.png
+
 **The downloads.sh file:**
 
-This file contains the software that needs to be used to run the pipeline.
+This file contains additional software required to run the pipeline.
 
 Example:
 
@@ -39,17 +48,8 @@ Example:
 
 **The requirements.txt/environment.yml file:**
 
-This file contains the packages and the versions used to run the software
+This file contains additional packages used and their versions.
 
-**The scripts folder**
-
-This folder contains the scripts that are going to be run.
-The ``run-<repo-name>.sh`` is the master file. It contains the command-line
-instructions to run the scripts and tools inside the docker from input to output.
-
-Example:
-
-.. image:: images/run_file.png
 
 .. note:: Create a new branch from master and label it with a version such as v1, v2...
 
@@ -74,7 +74,7 @@ Example:
     $ docker build -t 4dn-bedtomultivec:v4 .
 
 
-Once the docker image is build, you can test it by running the command:
+Once the docker image is built, you can test it by running the following command:
 ::
 
     $ docker run -v <path-to-test-files>:/d1/:rw <the-docker-image> run-<repo-name>.sh [parameters]
@@ -86,7 +86,7 @@ Example:
     $ docker run -v /users/luisa/test_files/:/d1:rw 4dn-bedtomultivec:v4 run-bedtomultivec.sh /d1/test_file.bed /d1/test.chrom.sizes 200 /d1/infos.txt 15 /d1/
 
 Once your local image works properly and gives the correct output, you can push the docker image to DockerHub.
-Ask Soo to add your github username to the dcic DockerHub repo.
+Ask Soo to add your Github username to the 4DN-DCIC DockerHub repo.
 
 First tag the image using the following command:
 ::
@@ -98,7 +98,7 @@ Example:
 
     $ docker tag 4dn-bedtomultivec:v4 4dndcic/4dn-bedtomultivec:v4
 
-Now you can push the image to the dockerhub repo:
+Now you can push the image to the DockerHub repo:
 ::
 
     $ docker push 4dndcic/4dn-bedtomultivec:v4

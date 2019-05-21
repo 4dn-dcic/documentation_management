@@ -1,7 +1,7 @@
 CWL workflow
 ============
 
-Once the docker image is setup, it is time to create a workflow to run the
+Once the docker image is set, the next step is to create a cwl workflow to run the
 pipeline step by step inside the docker.
 
 First create a folder in the repo called ``cwl``. Inside the folder create a cwl file
@@ -15,7 +15,7 @@ Example:
 .. note::
 
           Except for the inputs and outputs, the cwl file follows the same
-          convensions as the example above.
+          conventions as the example above.
 
           The ``cwlVersion`` is v1.0
 

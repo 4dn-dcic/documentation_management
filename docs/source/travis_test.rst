@@ -1,7 +1,7 @@
 Travis Test
 ============
 
-We use travis to test that the cwl workflow works as we want to. In order to run
+We use travis to test that the cwl workflow works properly. In order to run
 a travis test, we need a travis.yml file and test files.
 
 The .travis.yml file
@@ -43,8 +43,8 @@ Configuring Travis in Github
 -----------------------------
 Go to https://travis-ci.com/ and sign up with Github.
 
-Once you are signed in, go to your repository, click in ``more options`` on the
-top right, go to ``settings``, go to the section ``Environment Variables``. Add
+Once you are signed in, go to your repository in https://travis-ci.com/, click in ``more options`` on the
+top right, go to ``settings``, go to the section ``Environment Variables`` and add
 you DockerHub username and password.
 
 Now you can go back to the main travis CI page and click on ``Restart build``
