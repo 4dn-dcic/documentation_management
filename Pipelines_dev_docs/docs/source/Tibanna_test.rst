@@ -9,7 +9,7 @@ https://tibanna.readthedocs.io/en/latest/installation.html
 
 .. note:: Talk to Soo to add environment variables.
 
-Prepare Tibanna input
+Prepare Tibanna Input
 ----------------------
 
 Write a tibanna_input_json.txt file. This file contains the inputs to test

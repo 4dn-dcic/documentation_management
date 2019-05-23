@@ -87,7 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
 </ul>
 
             
@@ -168,7 +168,12 @@ conventions as the example above.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> is v1.0</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dockerPull</span></code> should make reference to the image in DockerHub</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> should make reference to the run.sh file</p>
-<p>A cwl file template can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/template.cwl">here</a></p>
+<p>A cwl file template can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/template.cwl">here</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the pipeline is has multiple steps, you may need multiple cwl files, one for each step. See the
+the Hi-C pipeline for an example of this. <a class="reference external" href="https://github.com/4dn-dcic/docker-4dn-hic">https://github.com/4dn-dcic/docker-4dn-hic</a></p>
 </div>
 </div>
 

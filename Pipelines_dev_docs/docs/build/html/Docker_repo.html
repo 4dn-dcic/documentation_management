@@ -92,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
 </ul>
 
             
@@ -175,18 +175,28 @@ The name should be informative about what the pipeline does.</p>
 <p>This file contains the instructions to assemble the docker image.</p>
 <p>Example:</p>
 <img alt="_images/dockerfile_image.png" src="_images/dockerfile_image.png" />
-<p>You can find a template of the Dockerfile <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/Dockerfile">here</a></p>
+<p>You can find a template of the Dockerfile <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/Dockerfile">here</a></p>
 <p><strong>The scripts folder</strong></p>
-<p>This folder contains the scripts of your bioinformatics software. The <code class="docutils literal notranslate"><span class="pre">run-&lt;repo-name&gt;.sh</span></code> is the master file.
-It contains the command-line instructions to run the scripts and tools inside the docker from input to output.</p>
+<p>This folder contains the scripts of your bioinformatics software. The <code class="docutils literal notranslate"><span class="pre">run-&lt;tool-name&gt;.sh</span></code>
+contains the command-line instructions to run the scripts and tools inside the docker.</p>
 <p>Example:</p>
 <img alt="_images/run_file.png" src="_images/run_file.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on the complexity of the pipeline, there can be one or several <code class="docutils literal notranslate"><span class="pre">run-&lt;tool-name&gt;.sh</span></code> files.
+See the Hi-C pipeline for a more complex example of how multiple``run-&lt;tool-name&gt;.sh`` files are used.
+<a class="reference external" href="https://github.com/4dn-dcic/docker-4dn-hic">https://github.com/4dn-dcic/docker-4dn-hic</a></p>
+</div>
 <p><strong>The downloads.sh file:</strong></p>
-<p>This file contains additional software required to run the pipeline.</p>
-<p>Example:</p>
+<p>This file contains all the major software components of the pipeline. It should contain comment lines that
+describe the name and version of individual software tools.</p>
+<p>Example: the main software of the bedtomultivec pipeline is clodius. You can refer to the Hi-C pipeline again for a more complex example</p>
 <img alt="_images/downloads_file.png" src="_images/downloads_file.png" />
 <p><strong>The requirements.txt/environment.yml file:</strong></p>
-<p>This file contains additional packages used and their versions.</p>
+<p>This file contains the dependencies of the software components.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>The README file **</p>
+<p>Make sure to write a README file at the end that explains the different components of the pipeline
+See here an example <a class="reference external" href="https://github.com/4dn-dcic/docker-4dn-hic">https://github.com/4dn-dcic/docker-4dn-hic</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Create a new branch from master and label it with a version such as v1, v2…</p>

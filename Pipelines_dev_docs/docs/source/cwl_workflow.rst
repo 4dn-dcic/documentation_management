@@ -24,3 +24,8 @@ Example:
           The ``baseCommand`` should make reference to the run.sh file
 
           A cwl file template can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/template.cwl>`_
+
+.. warning ::
+
+           If the pipeline is has multiple steps, you may need multiple cwl files, one for each step. See the
+           the Hi-C pipeline for an example of this. https://github.com/4dn-dcic/docker-4dn-hic

@@ -39,8 +39,8 @@ Example:
 .. image:: images/run_file.png
 
 .. note::
-            Depending on the complexity of the pipeline, there be one or several ``run-<tool-name>.sh`` files.
-            See the hic pipeline for a more complex example of how multiple``run-<tool-name>.sh`` files are used.
+            Depending on the complexity of the pipeline, there can be one or several ``run-<tool-name>.sh`` files.
+            See the Hi-C pipeline for a more complex example of how multiple``run-<tool-name>.sh`` files are used.
             https://github.com/4dn-dcic/docker-4dn-hic
 
 **The downloads.sh file:**
@@ -48,7 +48,7 @@ Example:
 This file contains all the major software components of the pipeline. It should contain comment lines that
 describe the name and version of individual software tools.
 
-Example: the main software of the bedtomultivec pipeline is clodius. You can refer to the hic pipeline again for a more complex example
+Example: the main software of the bedtomultivec pipeline is clodius. You can refer to the Hi-C pipeline again for a more complex example
 
 .. image:: images/downloads_file.png
 
@@ -56,7 +56,7 @@ Example: the main software of the bedtomultivec pipeline is clodius. You can ref
 
 This file contains the dependencies of the software components.
 
-** README file **
+**The README file**
 
 Make sure to write a README file at the end that explains the different components of the pipeline
 See here an example https://github.com/4dn-dcic/docker-4dn-hic

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="next" title="More Examples" href="examples.html" />
     <link rel="prev" title="Create Workflow Object" href="workflow_object.html" /> 
 </head>
 
@@ -88,12 +88,12 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Test with Tibanna</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-tibanna">Install Tibanna</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prepare-tibanna-input">Prepare Tibanna input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-tibanna-input">Prepare Tibanna Input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-tibanna-test">Run Tibanna Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#benchmarking">Benchmarking</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
 </ul>
 
             
@@ -170,7 +170,7 @@
 </div>
 </div>
 <div class="section" id="prepare-tibanna-input">
-<h2>Prepare Tibanna input<a class="headerlink" href="#prepare-tibanna-input" title="Permalink to this headline">¶</a></h2>
+<h2>Prepare Tibanna Input<a class="headerlink" href="#prepare-tibanna-input" title="Permalink to this headline">¶</a></h2>
 <p>Write a tibanna_input_json.txt file. This file contains the inputs to test</p>
 <p>Example:
 The tibanna_input.json.txt for the bedtomultivec pipeline can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tibanna_input_bed2multivecv4_json.txt">here</a></p>
@@ -198,19 +198,19 @@ it is necessary to add that information to tibanna.
 <h2>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This is only required when the pipeline memory consumption is highly dependent of the size of the
+<p>This is only required when the pipeline memory, CPU and/or space requirement is highly dependent of the size of the
 file.</p>
 </div>
 <p>It is necessary to get an estimate of the relationship between the size of the input
-files and the memory consumption so that Tibanna knows how much resources to allocate for each file based on its
+files and the memory, CPU, and disk space usage so that Tibanna knows how much resources to allocate for each file based on its
 size.</p>
 <p>In order to do this, run the Tibanna test above on different file sizes, changing
 the following parameters in the tibanna_input_json.txt file accordingly:</p>
-<p><code class="docutils literal notranslate"><span class="pre">instance_type</span></code>: choose a t2 instance that has bigger memory</p>
-<p><code class="docutils literal notranslate"><span class="pre">ebs_size</span></code>: modify the size of the instance for bigger files</p>
+<p><code class="docutils literal notranslate"><span class="pre">instance_type</span></code>: choose a t2 instance that has bigger memory and CPU. <a class="reference external" href="https://aws.amazon.com/ec2/instance-types/t2/">here</a> is a list</p>
+<p><code class="docutils literal notranslate"><span class="pre">ebs_size</span></code>: modify the size (in GB) of the instance for bigger files</p>
 <p>Look at the output of the test and record: the size of the input and output files, the max memory used, and
 the max CPU used for each file. This will give you a sense of the relationship between
-file size, memory and CPU consumption.</p>
+file size, memory, CPU consumption, and disk space.</p>
 <p>Then go to <cite>here &lt;https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py&gt;_</cite>
 and create a function for your pipeline that calculates how much resources are
 needed for each file size.</p>
@@ -238,7 +238,7 @@ data portal.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="More Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="workflow_object.html" class="btn btn-neutral float-left" title="Create Workflow Object" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -9,7 +9,7 @@ https://tibanna.readthedocs.io/en/latest/installation.html
 
 .. note:: Talk to Soo to add environment variables.
 
-Prepare Tibanna input
+Prepare Tibanna Input
 ----------------------
 
 Write a tibanna_input_json.txt file. This file contains the inputs to test
@@ -44,23 +44,23 @@ Benchmarking
 ------------
 .. note::
 
-    This is only required when the pipeline memory consumption is highly dependent of the size of the
+    This is only required when the pipeline memory, CPU and/or space requirement is highly dependent of the size of the
     file.
 
 It is necessary to get an estimate of the relationship between the size of the input
-files and the memory consumption so that Tibanna knows how much resources to allocate for each file based on its
+files and the memory, CPU, and disk space usage so that Tibanna knows how much resources to allocate for each file based on its
 size.
 
 In order to do this, run the Tibanna test above on different file sizes, changing
 the following parameters in the tibanna_input_json.txt file accordingly:
 
-``instance_type``: choose a t2 instance that has bigger memory
+``instance_type``: choose a t2 instance that has bigger memory and CPU. `here <https://aws.amazon.com/ec2/instance-types/t2/>`_ is a list
 
-``ebs_size``: modify the size of the instance for bigger files
+``ebs_size``: modify the size (in GB) of the instance for bigger files
 
 Look at the output of the test and record: the size of the input and output files, the max memory used, and
 the max CPU used for each file. This will give you a sense of the relationship between
-file size, memory and CPU consumption.
+file size, memory, CPU consumption, and disk space.
 
 Then go to `here <https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py>_`
 and create a function for your pipeline that calculates how much resources are
