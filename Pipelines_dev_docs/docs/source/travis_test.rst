@@ -26,15 +26,13 @@ Create a folder called ``tests``. Inside the folder add the following folders an
 files:
 
 - a ``test_files`` folder: This is where the input files reside.
-- a ``test_input_json`` folder: This should contain a ``input.json`` file specifying the input files
+- a ``test_input_json`` folder: This should contain  ``input.json`` files specifying the input files
   and parameters for the test.
 
 
 Example:
 
 .. image:: /images/input_json.png
-
-- a ``json_null_test.py`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/json_null_test.py>`_
 
 - a ``test_cwl.sh`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/tests_cwl.sh>`_
 
@@ -45,7 +43,7 @@ Go to https://travis-ci.com/ and sign up with Github.
 
 Once you are signed in, go to your repository in https://travis-ci.com/, click in ``more options`` on the
 top right, go to ``settings``, go to the section ``Environment Variables`` and add
-you DockerHub username and password.
+your DockerHub username and password.
 
 Now you can go back to the main travis CI page and click on ``Restart build``
 
