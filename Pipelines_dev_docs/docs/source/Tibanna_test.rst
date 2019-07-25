@@ -4,10 +4,11 @@ Test with Tibanna
 Install Tibanna
 ----------------
 
-Set up Tibanna following the instructions:
+Ask Soo to deploy a copy of Tibanna and configure `awscli` following the instructions:
 https://tibanna.readthedocs.io/en/latest/installation.html
 
-.. note:: Talk to Soo to add environment variables.
+.. note:: Talk to Soo to add environment variables (`AWS_ACCOUNT_NUMBER`, `TIBANNA_AWS_REGION`, `SECRET`, `TIBANNA_DEFAULT_STEP_FUNCTION_NAME`)
+
 
 Prepare Tibanna Input
 ----------------------
