@@ -27,10 +27,7 @@ Main Steps:
 .. toctree::
    :maxdepth: 2
 
-   bioinformatics_software
-   Docker_repo
-   cwl_workflow
-   travis_test
-   workflow_object
-   Tibanna_test
-   examples
+   overview
+   Github_setup
+   data_portal_setup
+   common_use_cases

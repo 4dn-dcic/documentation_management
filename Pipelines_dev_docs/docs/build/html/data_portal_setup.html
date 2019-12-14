@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setting Up Data Portal &mdash; 4DN Pipelines Development  Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 4DN Pipelines Development  Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">4DN Pipelines Development  Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Setting Up Data Portal</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/data_portal_setup.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-data-portal">
+<h1>Setting Up Data Portal<a class="headerlink" href="#setting-up-data-portal" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-workflow-object">
+<h2>Create Workflow Object<a class="headerlink" href="#create-workflow-object" title="Permalink to this headline">¶</a></h2>
+<p>In order to implement the pipeline in the data portal, it is necessary to create
+a workflow object. Test your workflow in webdev first. Upload your workflow and test files. Since
+this will be tested with tibanna, you can use bigger test files than the ones used in the travis
+test. <strong>You need also to create file formats and software objects</strong>
+in case they do not exists in the system.</p>
+<p>Example:</p>
+<p>You can find the bedtomultivec workflow.json <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/bedtomultivec_workflow_v4.json">here</a></p>
+<p>Here is a <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/workflow.json">template</a>
+you can use.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The workflow object along with the file formats and software objects created should have
+the same uuid in both webdev and data. Therefore, if a file format or software already exists
+on data and not in webdev, it is best to post the same object to webdev. Likewise, whenever an
+object is created in webdev, it is best to post the same object in data in order to keep the same
+uuids.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The new workflow object along with the new file formats and software objects jsons will be
+added to fourfront inserts</p>
+</div>
+</div>
+<div class="section" id="test-with-tibanna">
+<h2>Test with Tibanna<a class="headerlink" href="#test-with-tibanna" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="install-tibanna">
+<h2>Install Tibanna<a class="headerlink" href="#install-tibanna" title="Permalink to this headline">¶</a></h2>
+<p>Set up Tibanna following the instructions:
+<a class="reference external" href="https://tibanna.readthedocs.io/en/latest/installation.html">https://tibanna.readthedocs.io/en/latest/installation.html</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Talk to Soo to add environment variables.</p>
+</div>
+</div>
+<div class="section" id="prepare-tibanna-input">
+<h2>Prepare Tibanna Input<a class="headerlink" href="#prepare-tibanna-input" title="Permalink to this headline">¶</a></h2>
+<p>Write a tibanna_input_json.txt file. This file contains the inputs to test</p>
+<p>Example:
+The tibanna_input.json.txt for the bedtomultivec pipeline can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tibanna_input_bed2multivecv4_json.txt">here</a></p>
+<p>if the output file is an extra file instead of a new processed file, such as the ones resulting from
+a format conversion (ex. beddb and bed.multivec are extra files of the bed file)
+it is necessary to add that information to tibanna.
+<a class="reference external" href="https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268">https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268</a></p>
+</div>
+<div class="section" id="run-tibanna-test">
+<h2>Run Tibanna Test<a class="headerlink" href="#run-tibanna-test" title="Permalink to this headline">¶</a></h2>
+<p>Once Tibanna is set, go to the Tibanna repository folder and run the following commands:</p>
+<p>Activate the Tibanna environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source ~/venv/tibanna/bin/activate
+</pre></div>
+</div>
+<p>Run the Tibanna test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ invoke run_workflow --input-json=tibanna_input_json.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="benchmarking">
+<h2>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is only required when the pipeline memory, CPU and/or space requirement is highly dependent of the size of the
+file.</p>
+</div>
+<p>It is necessary to get an estimate of the relationship between the size of the input
+files and the memory, CPU, and disk space usage so that Tibanna knows how much resources to allocate for each file based on its
+size.</p>
+<p>In order to do this, run the Tibanna test above on different file sizes, changing
+the following parameters in the tibanna_input_json.txt file accordingly:</p>
+<p><code class="docutils literal notranslate"><span class="pre">instance_type</span></code>: choose a t2 instance that has bigger memory and CPU. <a class="reference external" href="https://aws.amazon.com/ec2/instance-types/t2/">here</a> is a list</p>
+<p><code class="docutils literal notranslate"><span class="pre">ebs_size</span></code>: modify the size (in GB) of the instance for bigger files</p>
+<p>Look at the output of the test and record: the size of the input and output files, the max memory used, and
+the max CPU used for each file. This will give you a sense of the relationship between
+file size, memory, CPU consumption, and disk space.</p>
+<p>Then go to <cite>here &lt;https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py&gt;_</cite>
+and create a function for your pipeline that calculates how much resources are
+needed for each file size.</p>
+<p>This is an example of the function created for insulator score caller:
+<a class="reference external" href="https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py#L218">https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py#L218</a></p>
+<p>The script only uses 1 thread, therefore  <code class="docutils literal notranslate"><span class="pre">nthreads</span></code> = 1</p>
+<p>The output file size was approx 1000 times smaller than the input file,
+therefore <code class="docutils literal notranslate"><span class="pre">output_bw_size</span></code> = <code class="docutils literal notranslate"><span class="pre">data_input_size</span></code> * 0.001</p>
+<p>After testing different input files in a range of 1GB - 45GB, the memory seemed
+to not surpass 1.5GB, therefore, <code class="docutils literal notranslate"><span class="pre">mem</span></code> = 2GB</p>
+<p>Once you submit a PR for your function, and Soo deploys Tibanna, you can test again, using the
+tibanna_input.json.txt file without specifying the instance used.</p>
+<p>Once the test passes, you can post the workflow in data, make sure to keep the
+same uuids you used when testing in webdev.</p>
+<p>Give the tibanna_input.json.txt file to Koray to run the workflow in the files that are in the
+data portal.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Luisa Mercado
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

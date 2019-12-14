@@ -1,14 +1,10 @@
-Docker Image Repo
+Setting Up GitHub Repo
 =================
-
-Getting Started
-----------------
 
 The first thing to do is to create a Github repository for the pipeline. This
 repository should follow the 4DN-DCIC general conventions.
 
 4DN-DCIC General Conventions
------------------------------
 
 **Naming:**
 
@@ -18,6 +14,13 @@ The name should be informative about what the pipeline does.
 Example: This pipeline converts a file from bed format to multivec format.
 
 .. image:: images/repo_name.png
+
+Dockerization
+--------------
+
+All the scripts, and software packages will be stored in a docker image so that the scripts
+can bed run independently on the machine that is used.
+
 
 **The Dockerfile:**
 
@@ -114,3 +117,87 @@ Now you can push the image to the DockerHub repo:
     $ docker push 4dndcic/4dn-bedtomultivec:v4
 
 .. note:: You may need to login first to the DockerHub account using the command ``docker login`` and entering your username and password. You can now check the docker image in the DockerHub repo.
+
+
+CWL
+--------------
+
+Once the docker image is set, the next step is to create a cwl workflow to run the
+pipeline step by step inside the docker.
+
+First create a folder in the repo called ``cwl``. Inside the folder create a cwl file
+called ``<repo-name>.cwl``. The cwl file should describe all the inputs
+(including files and parameters), the outputs and the order in which they occur.
+
+Example:
+
+.. image:: images/cwl_file.png
+
+.. note::
+
+          Except for the inputs and outputs, the cwl file follows the same
+          conventions as the example above.
+
+          The ``cwlVersion`` is v1.0
+
+          The ``dockerPull`` should make reference to the image in DockerHub
+
+          The ``baseCommand`` should make reference to the run.sh file
+
+          A cwl file template can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/template.cwl>`_
+
+.. warning ::
+
+           If the pipeline is has multiple steps, you may need multiple cwl files, one for each step. See the
+           the Hi-C pipeline for an example of this. https://github.com/4dn-dcic/docker-4dn-hic
+
+Travis Test
+--------------
+
+We use travis to test that the cwl workflow works properly. In order to run
+a travis test, we need a travis.yml file and test files.
+
+The .travis.yml file
+---------------------
+
+This travis.yml file tells travis what to do.
+
+Example:
+
+.. image:: images/travis_yml.png
+
+.. note::
+           This .travis.yml file is very similar for all the pipelines. You can
+           follow the template and modify the docker image name. The version of
+           the docker image does not need to be included. The .travis.yml file
+           temple can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/travis.yml>`_
+
+Tests files
+------------
+
+Create a folder called ``tests``. Inside the folder add the following folders and
+files:
+
+- a ``test_files`` folder: This is where the input files reside.
+- a ``test_input_json`` folder: This should contain  ``input.json`` files specifying the input files
+ and parameters for the test.
+
+
+Example:
+
+.. image:: /images/input_json.png
+
+- a ``test_cwl.sh`` file. Just copy this `file <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/tests_cwl.sh>`_
+
+
+Configuring Travis in Github
+-----------------------------
+Go to https://travis-ci.com/ and sign up with Github.
+
+Once you are signed in, go to your repository in https://travis-ci.com/, click in ``more options`` on the
+top right, go to ``settings``, go to the section ``Environment Variables`` and add
+your DockerHub username and password.
+
+Now you can go back to the main travis CI page and click on ``Restart build``
+
+.. warning:: Make sure the travis test passes before proceeding to the next steps.

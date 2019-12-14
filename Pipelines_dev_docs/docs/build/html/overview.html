@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; 4DN Pipelines Development  Guide  documentation</title>
+  <title>Overview &mdash; 4DN Pipelines Development  Guide  documentation</title>
   
 
   
@@ -25,7 +25,6 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -35,7 +34,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -62,7 +61,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -80,10 +79,13 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Github_setup.html">Setting Up GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_portal_setup.html">Setting Up Data Portal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="common_use_cases.html">Common Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
 </ul>
 
             
@@ -129,12 +131,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Overview</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -146,19 +150,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>There are several steps for developing and implementing pipelines in the 4DN data portal.
+The pipeline structure consists of a docker image containing the scripts, software and packages necessary to
+run all processes on a desired input data. A cwl file that contains the instructions to run those processes
+step by step. A workflow object representing the pipeline in the data portal. A foursight check that runs the
+pipeline on specific files on the portal and with specific computer resources (benchmarking) using tibanna.</p>
+<p>These are the following stages of the pipeline development:</p>
+<p><strong>Pipeline GitHub Repository:</strong></p>
+<p>All the pipelines have their own GitHub Repo containing the information of the docker and cwl file(s) and tests</p>
+<blockquote>
+<div><p>-Dockerization
+-CWL pointing to the docker
+-Travis Testing to ensure it is working how it is supposed to</p>
+</div></blockquote>
+<p><strong>Data Portal:</strong></p>
+<p>The pipeline object and other related objects such as file formats are transferred to the data portal and the
+computing resources necessary to run them on the data in the portal are assessed</p>
+<blockquote>
+<div><p>-Workflow Object and Related Objects
+-Tibanna benchmarking</p>
+</div></blockquote>
+<p><strong>Foursight:</strong></p>
+<p>The conditions and inputs in which the pipeline is going to be run are defined.</p>
+<blockquote>
+<div><p>-Configure pipeline run (metadata, files, query)
+-Run pipeline</p>
+</div></blockquote>
+<p>Overview Image:</p>
+<img alt="_images/cwl_file.png" src="_images/cwl_file.png" />
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
@@ -196,14 +219,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
