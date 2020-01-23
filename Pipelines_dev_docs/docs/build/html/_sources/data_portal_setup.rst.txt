@@ -1,8 +1,41 @@
-Test with Tibanna
-=================
+Setting Up Data Portal
+=======================
 
-Install Tibanna
-----------------
+Create Workflow Object
+----------------------
+
+In order to implement the pipeline in the data portal, it is necessary to create
+a workflow object that represents the pipeline. **Test your workflow in webdev first**. Upload your workflow and test files. Since
+this will be tested with tibanna, you can use bigger test files than the ones used in the travis
+test. **You need also to create file formats, software, and other objects used by the pipeline **
+in case they do not exists in the system.
+
+Example:
+
+You can find the bedtomultivec workflow.json `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/bedtomultivec_workflow_v4.json>`_
+
+Here is a `template <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/workflow.json>`_
+you can use.
+
+.. warning::
+
+          The workflow object along with the file formats and software objects created should have
+          the same uuid in both webdev and data. Therefore, if a file format or software already exists
+          on data and not in webdev, it is best to post the same object to webdev. Likewise, whenever an
+          object is created in webdev, it is best to post the same object in data in order to keep the same
+          uuids.
+
+.. note::
+
+          The new workflow object along with the new file formats and software objects jsons will be
+          added to fourfront inserts
+
+
+Test with Tibanna
+------------------
+
+It is important to test the pipeline with tibanna to make sure it is working as expected.
+
 
 Set up Tibanna following the instructions:
 https://tibanna.readthedocs.io/en/latest/installation.html
@@ -18,10 +51,10 @@ Example:
 The tibanna_input.json.txt for the bedtomultivec pipeline can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tibanna_input_bed2multivecv4_json.txt>`_
 
 .. note::
-  if the output file is an extra file instead of a new processed file, such as the ones resulting from
-  a format conversion (ex. beddb and bed.multivec are extra files of the bed file)
-  it is necessary to add that information to tibanna.
-  https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268
+    if the output file is an extra file instead of a new processed file, such as the ones resulting from
+    a format conversion (ex. beddb and bed.multivec are extra files of the bed file)
+    it is necessary to add that information to tibanna.
+    https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268
 
 Run Tibanna Test
 -----------------
@@ -32,20 +65,20 @@ Activate the Tibanna environment:
 
 ::
 
-  $ source ~/venv/tibanna/bin/activate
+$ source ~/venv/tibanna/bin/activate
 
 Run the Tibanna test:
 
 ::
 
-   $ invoke run_workflow --input-json=tibanna_input_json.txt
+ $ invoke run_workflow --input-json=tibanna_input_json.txt
 
 Benchmarking
 ------------
 .. note::
 
-    This is only required when the pipeline memory, CPU and/or space requirement is highly dependent of the size of the
-    file.
+  This is only required when the pipeline memory, CPU and/or space requirement is highly dependent of the size of the
+  file.
 
 It is necessary to get an estimate of the relationship between the size of the input
 files and the memory, CPU, and disk space usage so that Tibanna knows how much resources to allocate for each file based on its
@@ -62,7 +95,7 @@ Look at the output of the test and record: the size of the input and output file
 the max CPU used for each file. This will give you a sense of the relationship between
 file size, memory, CPU consumption, and disk space.
 
-Then go to `here <https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py>_`
+Then go to `here <https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py>`_
 and create a function for your pipeline that calculates how much resources are
 needed for each file size.
 

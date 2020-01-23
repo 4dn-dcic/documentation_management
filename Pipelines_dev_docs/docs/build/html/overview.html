@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CWL workflow &mdash; 4DN Pipelines Development  Guide  documentation</title>
+  <title>Overview &mdash; 4DN Pipelines Development  Guide  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Travis Test" href="travis_test.html" />
-    <link rel="prev" title="Docker Image Repo" href="Docker_repo.html" /> 
+    <link rel="next" title="Setting Up GitHub Repo" href="Github_setup.html" />
+    <link rel="prev" title="4DN Pipelines Development Guide" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,13 +81,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CWL workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Github_setup.html">Setting Up GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_portal_setup.html">Setting Up Data Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_use_cases.html">Common Use Cases</a></li>
 </ul>
 
             
@@ -133,13 +130,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>CWL workflow</li>
+      <li>Overview</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/cwl_workflow.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -152,29 +149,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cwl-workflow">
-<h1>CWL workflow<a class="headerlink" href="#cwl-workflow" title="Permalink to this headline">¶</a></h1>
-<p>Once the docker image is set, the next step is to create a cwl workflow to run the
-pipeline step by step inside the docker.</p>
-<p>First create a folder in the repo called <code class="docutils literal notranslate"><span class="pre">cwl</span></code>. Inside the folder create a cwl file
-called <code class="docutils literal notranslate"><span class="pre">&lt;repo-name&gt;.cwl</span></code>. The cwl file should describe all the inputs
-(including files and parameters), the outputs and the order in which they occur.</p>
-<p>Example:</p>
-<img alt="_images/cwl_file.png" src="_images/cwl_file.png" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Except for the inputs and outputs, the cwl file follows the same
-conventions as the example above.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> is v1.0</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">dockerPull</span></code> should make reference to the image in DockerHub</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> should make reference to the run.sh file</p>
-<p>A cwl file template can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/template.cwl">here</a></p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If the pipeline is has multiple steps, you may need multiple cwl files, one for each step. See the
-the Hi-C pipeline for an example of this. <a class="reference external" href="https://github.com/4dn-dcic/docker-4dn-hic">https://github.com/4dn-dcic/docker-4dn-hic</a></p>
-</div>
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>There are several steps for developing and implementing pipelines in the 4DN data portal.
+The pipeline basic structure consists of <strong>a docker image</strong> containing the scripts, software and packages necessary to
+run all processes on a desired input data. <strong>One or several cwl files</strong> containing the instructions about the order in which the scripts will be run.
+<strong>One or several workflow objects</strong> representing the pipeline in the data portal. <strong>A foursight check</strong> that runs the
+pipeline on specific files on the data portal and with specific computer resources (benchmarking) using tibanna.</p>
+<p>These are the following places in which the pipeline information is contained:</p>
+<p><strong>Pipeline GitHub Repository:</strong></p>
+<p>All the pipelines have their own GitHub Repo containing all the information about the pipeline such as the docker image,
+cwl file(s), tests and others. The steps performed in GitHub can be summarized as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Dockerization</p></li>
+<li><p>CWL file(s) pointing to the docker image</p></li>
+<li><p>Travis testing to ensure it is working how it is supposed to</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Data Portal:</strong></p>
+<p>The pipeline workflow object and other new related objects (file formats, reference files, …) are posted in the data portal  and the
+computing resources necessary to run them are assessed (memory, disk space). The steps performed in the data portal can be summarized as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Workflow object (s) and related objects are created</p></li>
+<li><p>Tibanna benchmarking</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Foursight:</strong></p>
+<p>Finally a foursight check is made to run the pipeline automatically in the data portal. The steps performed in foursight can be summarized as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Configure pipeline run (metadata, files, query)</p></li>
+<li><p>Run pipeline</p></li>
+</ul>
+</div></blockquote>
 </div>
 
 
@@ -185,10 +194,10 @@ the Hi-C pipeline for an example of this. <a class="reference external" href="ht
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="travis_test.html" class="btn btn-neutral float-right" title="Travis Test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Github_setup.html" class="btn btn-neutral float-right" title="Setting Up GitHub Repo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Docker_repo.html" class="btn btn-neutral float-left" title="Docker Image Repo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="4DN Pipelines Development Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

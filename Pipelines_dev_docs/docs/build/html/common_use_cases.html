@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Common Use Cases &mdash; 4DN Pipelines Development  Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Setting Up Data Portal" href="data_portal_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 4DN Pipelines Development  Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Github_setup.html">Setting Up GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_portal_setup.html">Setting Up Data Portal</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#output-files">Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extra-files">Extra files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qc-metrics-that-are-attached-to-existing-files">QC metrics that are attached to existing files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qc-metrics-that-are-patched-by-tibanna-to-a-specific-field">QC metrics that are patched by tibanna to a specific field</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">4DN Pipelines Development  Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Common Use Cases</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/common_use_cases.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="common-use-cases">
+<h1>Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="output-files">
+<h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h2>
+<p>When the output of the pipeline will result in a new processed file. Current examples of this case
+in the data portal are the Hi-C pipeline and other processing pipelines.</p>
+<p>In the workflow object, the output argument field must have the following fields:
+<a href="#id1"><span class="problematic" id="id2">``</span></a>”argument_type”: “Output processed file”</p>
+</div>
+<div class="section" id="extra-files">
+<h2>Extra files<a class="headerlink" href="#extra-files" title="Permalink to this headline">¶</a></h2>
+<p>When the output of the pipeline will result in an extra file for an existing file.
+Current examples of this case in the data portal are bedtobedb and bedtomultivec.</p>
+<p>In the workflow object, the output argument field must have the following fields:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;argument_format&quot;:</span> <span class="pre">&quot;</span> <span class="pre">&lt;add</span> <span class="pre">the</span> <span class="pre">format</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">file&gt;&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;argument_to_be_attached_to&quot;:&quot;&lt;the</span> <span class="pre">argument</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">to</span> <span class="pre">which</span> <span class="pre">it</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">attached</span> <span class="pre">to&gt;&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;argument_type&quot;:&quot;Output</span> <span class="pre">to</span> <span class="pre">be-extra-input</span> <span class="pre">file&quot;</span></code></p>
+</div>
+<div class="section" id="qc-metrics-that-are-attached-to-existing-files">
+<h2>QC metrics that are attached to existing files<a class="headerlink" href="#qc-metrics-that-are-attached-to-existing-files" title="Permalink to this headline">¶</a></h2>
+<p>When the output of the pipeline will result in a QC metric object attached to an existing file.
+The output of the pipeline should be a json file in which the key corresponds to the field and the
+value corresponds to the value in the QC metric object. Current examples in the data portal include
+PairsQC and BamqQC. Make sure that the quality metric type is in the schema, otherwise, add it to it.</p>
+<p>In the workflow object, the output argument field must have the following fields:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;argument_type&quot;:</span> <span class="pre">&quot;Output</span> <span class="pre">QC</span> <span class="pre">file&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;qc_json&quot;:</span> <span class="pre">&quot;true&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;argument_to_be_attached_to&quot;:</span> <span class="pre">&quot;&lt;the</span> <span class="pre">argument</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">to</span> <span class="pre">which</span> <span class="pre">it</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">attached</span> <span class="pre">to&gt;&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;qc_type&quot;:</span> <span class="pre">&quot;&lt;the</span> <span class="pre">quality</span> <span class="pre">metric</span> <span class="pre">type&gt;&quot;</span></code> This is the quality metric type (eg. quality_metric_bamqc)</p>
+</div>
+<div class="section" id="qc-metrics-that-are-patched-by-tibanna-to-a-specific-field">
+<h2>QC metrics that are patched by tibanna to a specific field<a class="headerlink" href="#qc-metrics-that-are-patched-by-tibanna-to-a-specific-field" title="Permalink to this headline">¶</a></h2>
+<p>When the output will be patched to a field by tibanna (such as md5 and rna-strandedness).
+The output of the pipeline should be a txt file containing the value(s) of the field(s) that are going to be patched,
+each value should be on a separate line.
+Current examples in the data portal include md5 and fastq-formatqc.</p>
+<p>Steps:</p>
+<p>-Add new field to the schema(fourfront) if it is not already there yet.</p>
+<p>-Build Fourfront locally and test that the field works properly (Do some patches)</p>
+<p>-Submit PR and once it is in master tell Soo to handle the tibanna part</p>
+<p>In the workflow object, the output argument field must have the following field:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;argument_type&quot;:</span> <span class="pre">&quot;Output</span> <span class="pre">report</span> <span class="pre">file&quot;</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="data_portal_setup.html" class="btn btn-neutral float-left" title="Setting Up Data Portal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Luisa Mercado
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

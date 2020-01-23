@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Docker Image Repo &mdash; 4DN Pipelines Development  Guide  documentation</title>
+  <title>Setting Up GitHub Repo &mdash; 4DN Pipelines Development  Guide  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CWL workflow" href="cwl_workflow.html" />
-    <link rel="prev" title="Bioinformatics Software" href="bioinformatics_software.html" /> 
+    <link rel="next" title="Setting Up Data Portal" href="data_portal_setup.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,18 +81,19 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker Image Repo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dn-dcic-general-conventions">4DN-DCIC General Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting Up GitHub Repo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dockerization">Dockerization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-the-docker-image-locally">Testing the docker image locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cwl-file-s">CWL File(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#travis-testing">Travis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-travis-yml-file">The .travis.yml file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests-files">Tests files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-travis-in-github">Configuring Travis in Github</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_portal_setup.html">Setting Up Data Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common_use_cases.html">Common Use Cases</a></li>
 </ul>
 
             
@@ -138,13 +139,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Docker Image Repo</li>
+      <li>Setting Up GitHub Repo</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/Docker_repo.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Github_setup.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -157,20 +158,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="docker-image-repo">
-<h1>Docker Image Repo<a class="headerlink" href="#docker-image-repo" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="setting-up-github-repo">
+<h1>Setting Up GitHub Repo<a class="headerlink" href="#setting-up-github-repo" title="Permalink to this headline">¶</a></h1>
 <p>The first thing to do is to create a Github repository for the pipeline. This
 repository should follow the 4DN-DCIC general conventions.</p>
-</div>
-<div class="section" id="dn-dcic-general-conventions">
-<h2>4DN-DCIC General Conventions<a class="headerlink" href="#dn-dcic-general-conventions" title="Permalink to this headline">¶</a></h2>
+<p>4DN-DCIC General Conventions</p>
 <p><strong>Naming:</strong></p>
 <p>The name of the repo should start by the prefix <strong>docker-4dn-</strong> followed by the name of the repo.
 The name should be informative about what the pipeline does.</p>
 <p>Example: This pipeline converts a file from bed format to multivec format.</p>
 <img alt="_images/repo_name.png" src="_images/repo_name.png" />
+<div class="section" id="dockerization">
+<h2>Dockerization<a class="headerlink" href="#dockerization" title="Permalink to this headline">¶</a></h2>
+<p>All the scripts, and software packages will be stored in a docker image so that the scripts
+can be run independently on the machine that is used. Preserving the computational environment</p>
 <p><strong>The Dockerfile:</strong></p>
 <p>This file contains the instructions to assemble the docker image.</p>
 <p>Example:</p>
@@ -194,7 +195,7 @@ describe the name and version of individual software tools.</p>
 <img alt="_images/downloads_file.png" src="_images/downloads_file.png" />
 <p><strong>The requirements.txt/environment.yml file:</strong></p>
 <p>This file contains the dependencies of the software components.</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>The README file **</p>
+<p><strong>The README file</strong></p>
 <p>Make sure to write a README file at the end that explains the different components of the pipeline
 See here an example <a class="reference external" href="https://github.com/4dn-dcic/docker-4dn-hic">https://github.com/4dn-dcic/docker-4dn-hic</a></p>
 <div class="admonition note">
@@ -205,7 +206,7 @@ See here an example <a class="reference external" href="https://github.com/4dn-d
 <div class="section" id="testing-the-docker-image-locally">
 <h2>Testing the docker image locally<a class="headerlink" href="#testing-the-docker-image-locally" title="Permalink to this headline">¶</a></h2>
 <p>In order to test the docker image locally, you need to download and install docker.</p>
-<p>Once docker is installed in your computer, clone the repo and go to the local folder.
+<p>Once docker is installed in your computer, clone the repo and go to the local folder where the Dockerfile is located.
 Run the following command to build the local image:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker build -t &lt;name-of-the-local-image&gt;:version .
 </pre></div>
@@ -243,6 +244,77 @@ Ask Soo to add your Github username to the 4DN-DCIC DockerHub repo.</p>
 <p>You may need to login first to the DockerHub account using the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code> and entering your username and password. You can now check the docker image in the DockerHub repo.</p>
 </div>
 </div>
+<div class="section" id="cwl-file-s">
+<h2>CWL File(s)<a class="headerlink" href="#cwl-file-s" title="Permalink to this headline">¶</a></h2>
+<p>Once the docker image is set, the next step is to create a cwl workflow to run the
+pipeline step by step inside the docker.</p>
+<p>First create a folder in the repo called <code class="docutils literal notranslate"><span class="pre">cwl</span></code>. Inside the folder create a cwl file
+called <code class="docutils literal notranslate"><span class="pre">&lt;repo-name&gt;.cwl</span></code>. The cwl file should describe all the inputs
+(including files and parameters), the outputs and the order in which they occur.</p>
+<p>Example:</p>
+<img alt="_images/cwl_file.png" src="_images/cwl_file.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Except for the inputs and outputs, the cwl file follows the same
+conventions as the example above.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cwlVersion</span></code> is v1.0</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dockerPull</span></code> should make reference to the image in DockerHub</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baseCommand</span></code> should make reference to the run.sh file</p>
+<p>A cwl file template can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/template.cwl">here</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the pipeline is has multiple steps, you may need multiple cwl files, one for each step. See the
+the Hi-C pipeline for an example of this. <a class="reference external" href="https://github.com/4dn-dcic/docker-4dn-hic">https://github.com/4dn-dcic/docker-4dn-hic</a></p>
+</div>
+</div>
+<div class="section" id="travis-testing">
+<h2>Travis Testing<a class="headerlink" href="#travis-testing" title="Permalink to this headline">¶</a></h2>
+<p>We use travis to test that the cwl workflow works properly. In order to run
+a travis test, we need a travis.yml file and test files.</p>
+</div>
+<div class="section" id="the-travis-yml-file">
+<h2>The .travis.yml file<a class="headerlink" href="#the-travis-yml-file" title="Permalink to this headline">¶</a></h2>
+<p>This travis.yml file tells travis what to do.</p>
+<p>Example:</p>
+<img alt="_images/travis_yml.png" src="_images/travis_yml.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This .travis.yml file is very similar for all the pipelines. You can
+follow the template and modify the docker image name. The version of
+the docker image does not need to be included. The .travis.yml file
+temple can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/travis.yml">here</a></p>
+</div>
+</div>
+<div class="section" id="tests-files">
+<h2>Tests files<a class="headerlink" href="#tests-files" title="Permalink to this headline">¶</a></h2>
+<p>Create a folder called <code class="docutils literal notranslate"><span class="pre">tests</span></code>. Inside the folder add the following folders and
+files:</p>
+<ul class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">test_files</span></code> folder: This is where the input files reside.</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">test_input_json</span></code> folder: This should contain  <code class="docutils literal notranslate"><span class="pre">input.json</span></code> files specifying the input files</p></li>
+</ul>
+<blockquote>
+<div><p>and parameters for the test.</p>
+</div></blockquote>
+<p>Example:</p>
+<img alt="_images/input_json.png" src="_images/input_json.png" />
+<ul class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">test_cwl.sh</span></code> file. Just copy this <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/tests_cwl.sh">file</a></p></li>
+</ul>
+</div>
+<div class="section" id="configuring-travis-in-github">
+<h2>Configuring Travis in Github<a class="headerlink" href="#configuring-travis-in-github" title="Permalink to this headline">¶</a></h2>
+<p>Go to <a class="reference external" href="https://travis-ci.com/">https://travis-ci.com/</a> and sign up with Github.</p>
+<p>Once you are signed in, go to your repository in <a class="reference external" href="https://travis-ci.com/">https://travis-ci.com/</a>, click in <code class="docutils literal notranslate"><span class="pre">more</span> <span class="pre">options</span></code> on the
+top right, go to <code class="docutils literal notranslate"><span class="pre">settings</span></code>, go to the section <code class="docutils literal notranslate"><span class="pre">Environment</span> <span class="pre">Variables</span></code> and add
+your DockerHub username and password.</p>
+<p>Now you can go back to the main travis CI page and click on <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">build</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure the travis test passes before proceeding to the next steps.</p>
+</div>
+</div>
 </div>
 
 
@@ -253,10 +325,10 @@ Ask Soo to add your Github username to the 4DN-DCIC DockerHub repo.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cwl_workflow.html" class="btn btn-neutral float-right" title="CWL workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data_portal_setup.html" class="btn btn-neutral float-right" title="Setting Up Data Portal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="bioinformatics_software.html" class="btn btn-neutral float-left" title="Bioinformatics Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
