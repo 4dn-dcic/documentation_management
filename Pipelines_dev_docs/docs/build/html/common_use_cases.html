@@ -160,8 +160,8 @@
 <h2>Output Files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h2>
 <p>When the output of the pipeline will result in a new processed file. Current examples of this case
 in the data portal are the Hi-C pipeline and other processing pipelines.</p>
-<p>In the workflow object, the output argument field must have the following fields:
-<a href="#id1"><span class="problematic" id="id2">``</span></a>”argument_type”: “Output processed file”</p>
+<p>In the workflow object, the output argument field must have the following fields:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;argument_type&quot;:</span> <span class="pre">&quot;Output</span> <span class="pre">processed</span> <span class="pre">file&quot;</span></code></p>
 </div>
 <div class="section" id="extra-files">
 <h2>Extra files<a class="headerlink" href="#extra-files" title="Permalink to this headline">¶</a></h2>
@@ -182,7 +182,7 @@ PairsQC and BamqQC. Make sure that the quality metric type is in the schema, oth
 <p><code class="docutils literal notranslate"><span class="pre">&quot;argument_type&quot;:</span> <span class="pre">&quot;Output</span> <span class="pre">QC</span> <span class="pre">file&quot;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;qc_json&quot;:</span> <span class="pre">&quot;true&quot;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;argument_to_be_attached_to&quot;:</span> <span class="pre">&quot;&lt;the</span> <span class="pre">argument</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">to</span> <span class="pre">which</span> <span class="pre">it</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">attached</span> <span class="pre">to&gt;&quot;</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">&quot;qc_type&quot;:</span> <span class="pre">&quot;&lt;the</span> <span class="pre">quality</span> <span class="pre">metric</span> <span class="pre">type&gt;&quot;</span></code> This is the quality metric type (eg. quality_metric_bamqc)</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;qc_type&quot;:</span> <span class="pre">&quot;&lt;the</span> <span class="pre">quality</span> <span class="pre">metric</span> <span class="pre">type&gt;&quot;</span></code> This is the quality metric object (eg. quality_metric_bamqc)</p>
 </div>
 <div class="section" id="qc-metrics-that-are-patched-by-tibanna-to-a-specific-field">
 <h2>QC metrics that are patched by tibanna to a specific field<a class="headerlink" href="#qc-metrics-that-are-patched-by-tibanna-to-a-specific-field" title="Permalink to this headline">¶</a></h2>
@@ -190,10 +190,14 @@ PairsQC and BamqQC. Make sure that the quality metric type is in the schema, oth
 The output of the pipeline should be a txt file containing the value(s) of the field(s) that are going to be patched,
 each value should be on a separate line.
 Current examples in the data portal include md5 and fastq-formatqc.</p>
-<p>Steps:</p>
-<p>-Add new field to the schema(fourfront) if it is not already there yet.</p>
-<p>-Build Fourfront locally and test that the field works properly (Do some patches)</p>
-<p>-Submit PR and once it is in master tell Soo to handle the tibanna part</p>
+<p>Before being able to run the pipeline the following steps should be performed:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add new field to the schema (fourfront) if it is not already there yet.</p></li>
+<li><p>Build Fourfront locally and test that the field works properly (Do some patches)</p></li>
+<li><p>Submit PR and once it is in master tell Soo to handle the tibanna part</p></li>
+</ul>
+</div></blockquote>
 <p>In the workflow object, the output argument field must have the following field:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;argument_type&quot;:</span> <span class="pre">&quot;Output</span> <span class="pre">report</span> <span class="pre">file&quot;</span></code></p>
 </div>
