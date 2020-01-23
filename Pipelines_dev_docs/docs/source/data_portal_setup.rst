@@ -7,12 +7,12 @@ Create Workflow Object
 In order to implement the pipeline in the data portal, it is necessary to create
 a workflow object that represents the pipeline. **Test your workflow in webdev first**. Upload your workflow and test files. Since
 this will be tested with tibanna, you can use bigger test files than the ones used in the travis
-test. **You need also to create file formats, software, and other objects used by the pipeline **
+test. **You need also to create file formats, software, and other objects used by the pipeline**
 in case they do not exists in the system.
 
 Example:
 
-You can find the bedtomultivec workflow.json `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/bedtomultivec_workflow_v4.json>`_
+You can find the bedtomultivec workflow.json `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/bedtomultivec_workflow_v4.json>`_
 
 Here is a `template <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/workflow.json>`_
 you can use.
@@ -48,7 +48,7 @@ Prepare Tibanna Input
 Write a tibanna_input_json.txt file. This file contains the inputs to test
 
 Example:
-The tibanna_input.json.txt for the bedtomultivec pipeline can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tibanna_input_bed2multivecv4_json.txt>`_
+The tibanna_input.json.txt for the bedtomultivec pipeline can be found `here <https://github.com/4dn-dcic/documentation_management/blob/master/Pipelines_dev_docs/docs/source/files/tibanna_input_bed2multivecv4_json.txt>`_
 
 .. note::
     if the output file is an extra file instead of a new processed file, such as the ones resulting from

@@ -8,7 +8,8 @@ When the output of the pipeline will result in a new processed file. Current exa
 in the data portal are the Hi-C pipeline and other processing pipelines.
 
 In the workflow object, the output argument field must have the following fields:
-``"argument_type": "Output processed file"
+
+``"argument_type": "Output processed file"``
 
 Extra files
 ------------
@@ -41,7 +42,7 @@ In the workflow object, the output argument field must have the following fields
 
 ``"argument_to_be_attached_to": "<the argument name of the file to which it will be attached to>"``
 
-``"qc_type": "<the quality metric type>"`` This is the quality metric type (eg. quality_metric_bamqc)
+``"qc_type": "<the quality metric type>"`` This is the quality metric object (eg. quality_metric_bamqc)
 
 
 QC metrics that are patched by tibanna to a specific field
@@ -52,13 +53,13 @@ The output of the pipeline should be a txt file containing the value(s) of the f
 each value should be on a separate line.
 Current examples in the data portal include md5 and fastq-formatqc.
 
-Steps:
+Before being able to run the pipeline the following steps should be performed:
 
--Add new field to the schema(fourfront) if it is not already there yet.
+	- Add new field to the schema (fourfront) if it is not already there yet.
 
--Build Fourfront locally and test that the field works properly (Do some patches)
+	- Build Fourfront locally and test that the field works properly (Do some patches)
 
--Submit PR and once it is in master tell Soo to handle the tibanna part
+	- Submit PR and once it is in master tell Soo to handle the tibanna part
 
 In the workflow object, the output argument field must have the following field:
 
