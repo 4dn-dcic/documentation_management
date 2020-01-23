@@ -16,7 +16,7 @@ cwl file(s), tests and others. The steps performed in GitHub can be summarized a
 
     - Dockerization
     - CWL file(s) pointing to the docker image
-    - Travis Testing to ensure it is working how it is supposed to
+    - Travis testing to ensure it is working how it is supposed to
 
 **Data Portal:**
 
@@ -32,7 +32,3 @@ Finally a foursight check is made to run the pipeline automatically in the data 
 
     - Configure pipeline run (metadata, files, query)
     - Run pipeline
-
-Overview Image:
-
-.. image:: images/cwl_file.png

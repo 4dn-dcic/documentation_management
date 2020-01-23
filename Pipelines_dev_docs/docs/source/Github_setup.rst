@@ -19,7 +19,7 @@ Dockerization
 --------------
 
 All the scripts, and software packages will be stored in a docker image so that the scripts
-can bed run independently on the machine that is used.
+can be run independently on the machine that is used. Preserving the computational environment
 
 
 **The Dockerfile:**
@@ -71,7 +71,7 @@ Testing the docker image locally
 
 In order to test the docker image locally, you need to download and install docker.
 
-Once docker is installed in your computer, clone the repo and go to the local folder.
+Once docker is installed in your computer, clone the repo and go to the local folder where the Dockerfile is located.
 Run the following command to build the local image:
 ::
 
@@ -119,7 +119,7 @@ Now you can push the image to the DockerHub repo:
 .. note:: You may need to login first to the DockerHub account using the command ``docker login`` and entering your username and password. You can now check the docker image in the DockerHub repo.
 
 
-CWL
+CWL File(s)
 --------------
 
 Once the docker image is set, the next step is to create a cwl workflow to run the
@@ -151,7 +151,7 @@ Example:
            If the pipeline is has multiple steps, you may need multiple cwl files, one for each step. See the
            the Hi-C pipeline for an example of this. https://github.com/4dn-dcic/docker-4dn-hic
 
-Travis Test
+Travis Testing
 --------------
 
 We use travis to test that the cwl workflow works properly. In order to run

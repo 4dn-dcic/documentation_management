@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Common Use Cases" href="common_use_cases.html" />
+    <link rel="prev" title="Setting Up GitHub Repo" href="Github_setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -78,14 +80,18 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="bioinformatics_software.html">Bioinformatics Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Docker_repo.html">Docker Image Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cwl_workflow.html">CWL workflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="travis_test.html">Travis Test</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_object.html">Create Workflow Object</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tibanna_test.html">Test with Tibanna</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">More Examples</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Github_setup.html">Setting Up GitHub Repo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting Up Data Portal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-workflow-object">Create Workflow Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-with-tibanna">Test with Tibanna</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-tibanna-input">Prepare Tibanna Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-tibanna-test">Run Tibanna Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#benchmarking">Benchmarking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common_use_cases.html">Common Use Cases</a></li>
 </ul>
 
             
@@ -155,9 +161,9 @@
 <div class="section" id="create-workflow-object">
 <h2>Create Workflow Object<a class="headerlink" href="#create-workflow-object" title="Permalink to this headline">¶</a></h2>
 <p>In order to implement the pipeline in the data portal, it is necessary to create
-a workflow object. Test your workflow in webdev first. Upload your workflow and test files. Since
+a workflow object that represents the pipeline. <strong>Test your workflow in webdev first</strong>. Upload your workflow and test files. Since
 this will be tested with tibanna, you can use bigger test files than the ones used in the travis
-test. <strong>You need also to create file formats and software objects</strong>
+test. <a href="#id1"><span class="problematic" id="id2">**</span></a>You need also to create file formats, software, and other objects used by the pipeline **
 in case they do not exists in the system.</p>
 <p>Example:</p>
 <p>You can find the bedtomultivec workflow.json <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/bedtomultivec_workflow_v4.json">here</a></p>
@@ -179,9 +185,7 @@ added to fourfront inserts</p>
 </div>
 <div class="section" id="test-with-tibanna">
 <h2>Test with Tibanna<a class="headerlink" href="#test-with-tibanna" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="install-tibanna">
-<h2>Install Tibanna<a class="headerlink" href="#install-tibanna" title="Permalink to this headline">¶</a></h2>
+<p>It is important to test the pipeline with tibanna to make sure it is working as expected.</p>
 <p>Set up Tibanna following the instructions:
 <a class="reference external" href="https://tibanna.readthedocs.io/en/latest/installation.html">https://tibanna.readthedocs.io/en/latest/installation.html</a></p>
 <div class="admonition note">
@@ -194,10 +198,13 @@ added to fourfront inserts</p>
 <p>Write a tibanna_input_json.txt file. This file contains the inputs to test</p>
 <p>Example:
 The tibanna_input.json.txt for the bedtomultivec pipeline can be found <a class="reference external" href="https://github.com/4dn-dcic/documentation_management/blob/master/docs/source/files/tibanna_input_bed2multivecv4_json.txt">here</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>if the output file is an extra file instead of a new processed file, such as the ones resulting from
 a format conversion (ex. beddb and bed.multivec are extra files of the bed file)
 it is necessary to add that information to tibanna.
 <a class="reference external" href="https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268">https://github.com/4dn-dcic/tibanna/blob/master/core/update_ffmeta_awsem/service.py#L268</a></p>
+</div>
 </div>
 <div class="section" id="run-tibanna-test">
 <h2>Run Tibanna Test<a class="headerlink" href="#run-tibanna-test" title="Permalink to this headline">¶</a></h2>
@@ -228,7 +235,7 @@ the following parameters in the tibanna_input_json.txt file accordingly:</p>
 <p>Look at the output of the test and record: the size of the input and output files, the max memory used, and
 the max CPU used for each file. This will give you a sense of the relationship between
 file size, memory, CPU consumption, and disk space.</p>
-<p>Then go to <cite>here &lt;https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py&gt;_</cite>
+<p>Then go to <a class="reference external" href="https://github.com/SooLee/Benchmark/blob/master/Benchmark/bfunctions.py">here</a>
 and create a function for your pipeline that calculates how much resources are
 needed for each file size.</p>
 <p>This is an example of the function created for insulator score caller:
@@ -252,6 +259,15 @@ data portal.</p>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="common_use_cases.html" class="btn btn-neutral float-right" title="Common Use Cases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Github_setup.html" class="btn btn-neutral float-left" title="Setting Up GitHub Repo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
