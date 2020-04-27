@@ -21,7 +21,8 @@
             {
                 "argument_format": "92537561-4c02-440e-a51f-22b4b08b6918",
                 "argument_type": "Output to-be-extra-input file",
-                "workflow_argument_name": "multivec_file"
+                "workflow_argument_name": "multivec_file",
+                "extra_file_use_for": "visualization"
             },
 
             {
