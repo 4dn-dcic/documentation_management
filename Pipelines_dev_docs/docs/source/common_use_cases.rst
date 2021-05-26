@@ -25,6 +25,11 @@ In the workflow object, the output argument field must have the following fields
 
 ``""argument_type":"Output to be-extra-input file"``
 
+If the extra file is going to be used for visualization, the following field should be added as well:
+
+``"extra_file_use_for": "visualization"`` 
+
+This will add the tag ``use_for`` to the extra file
 
 QC metrics that are attached to existing files
 ------------------------------------------------
